@@ -1,4 +1,5 @@
-const numOfElems = 33;
+let numOfElems = 15;
+let animationSpeed = 250;
 const array = [];
 
 let audioCtx = null;
@@ -6,9 +7,7 @@ let currentAlgorithm = null; // Initially no algorithm selected
 
 const playNote = (freq) => {
   if (audioCtx == null) {
-    audioCtx = new (AudioContext ||
-      webkitAudioContext ||
-      window.webkitAudioContext)();
+    audioCtx = new (AudioContext || webkitAudioContext)();
   }
   const dur = 0.1;
   const osc = audioCtx.createOscillator();
@@ -22,7 +21,19 @@ const playNote = (freq) => {
   node.connect(audioCtx.destination);
 };
 
+const updateElementCount = (count) => {
+  numOfElems = parseInt(count);
+  document.getElementById("elementCount").innerText = numOfElems;
+  start(); // Update the array whenever the slider changes
+};
+
+const updateSpeed = (value) => {
+  animationSpeed = parseInt(value);
+  document.getElementById("speedValue").innerText = animationSpeed;
+};
+
 const start = () => {
+  array.length = 0;
   for (let i = 0; i < numOfElems; i++) {
     array[i] = Math.random();
   }
@@ -34,8 +45,7 @@ const sort = () => {
     alert("Please select a sorting algorithm first!");
     return;
   }
-  const copy = [...array];
-  const moves = sortingAlgorithms[currentAlgorithm](copy); // Call the selected algorithm
+  const moves = sortingAlgorithms[currentAlgorithm]([...array]); // Call the selected algorithm
   animate(moves);
 };
 
@@ -52,12 +62,8 @@ const animate = (moves) => {
   }
 
   playNote(200 + array[i] * 500);
-  playNote(200 + array[i] * 500);
-
   showBars(move);
-  setTimeout(function () {
-    animate(moves);
-  }, 250);
+  setTimeout(() => animate(moves), animationSpeed);
 };
 
 const bubbleSort = (array) => {
@@ -174,6 +180,7 @@ const setAlgorithm = (algorithm) => {
 };
 
 const showBars = (move) => {
+  const container = document.getElementById("container");
   container.innerHTML = "";
   for (let i = 0; i < array.length; i++) {
     const element = document.createElement("div");
@@ -181,11 +188,7 @@ const showBars = (move) => {
     element.classList.add("element");
 
     if (move && move.indices.includes(i)) {
-      if (move.type === "swap") {
-        element.style.backgroundColor = "red"; // Highlight swapped elements
-      } else if (move.type === "comp") {
-        element.style.backgroundColor = "blue"; // Highlight compared elements
-      }
+      element.style.backgroundColor = move.type === "swap" ? "red" : "blue";
     }
     container.appendChild(element);
   }
