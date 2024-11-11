@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sorting Visualiser</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Sorting Visualiser</h1>
+    <h2 style="color: blue">Blue = Comparison</h2>
+    <h2 style="color: red">Red = Swap</h2>
+
+    <!-- Navbar for selecting sorting algorithms -->
+    <nav>
+      <button onClick="setAlgorithm('bubbleSort')">Bubble Sort</button>
+      <button onClick="setAlgorithm('quickSort')">Quick Sort</button>
+      <button onClick="setAlgorithm('insertionSort')">Insertion Sort</button>
+      <button onClick="setAlgorithm('selectionSort')">Selection Sort</button>
+    </nav>
+
+    <div id="container"></div>
+
+    <hr />
+
+    <div>
+      <button onClick="start()">Start</button>
+      <button onClick="sort()">Sort</button>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
