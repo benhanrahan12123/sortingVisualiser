@@ -8,6 +8,7 @@ The visualiser supports the following sorting algorithms:
 - Insertion Sort
 - Selection Sort
 
-![Screenshot 2024-11-11 033516](https://github.com/user-attachments/assets/2d795164-8890-4b10-988e-7aa8a7f0292e)
-![Screenshot 2024-11-11 033556](https://github.com/user-attachments/assets/8fcc56aa-4165-435b-bf84-302d93ccc729)
-![Screenshot 2024-11-11 034020](https://github.com/user-attachments/assets/b1d5110a-5ec3-4d59-939d-d33e34884d57)
+
+![Screenshot 2024-11-11 170657](https://github.com/user-attachments/assets/ee6e5635-1fd7-4157-a937-9bc8d00a1ee6)
+![Screenshot 2024-11-11 170755](https://github.com/user-attachments/assets/e31d7f83-a7fa-4fb9-9073-97d778911ff9)
+![Screenshot 2024-11-11 170824](https://github.com/user-attachments/assets/69e547e2-823b-4229-8e2c-6e77e633d93b)
